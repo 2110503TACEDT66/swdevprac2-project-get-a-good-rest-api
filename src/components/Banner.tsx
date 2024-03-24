@@ -14,17 +14,7 @@ export default function Banner() {
     const router = useRouter();
     
     const { data: session } = useSession();
-    const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            if (session?.user?.token) {
-                const response: UserProfile = await getUserProfile(session.user.token);
-                setUserProfile(response);
-            }
-        };
-        fetchData();
-    }, []);
+    console.log(session?.user)
 
     return (
         <div className="block m-0 w-full h-[500px] relative" onClick={() => setIndex(index+1)}>
@@ -43,7 +33,7 @@ export default function Banner() {
                 <h3 className='text-3xl'>ข้อความประชาสัมพันธ์การให้บริการวัคซีน</h3>
             </div>
             {
-                session ? <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-300 text-xl'>Welcome {userProfile?.data.name}</div>
+                session ? <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-300 text-xl'>Welcome {session.user?.data.name}</div>
                     : null
             }
             <button className='bg-white text-cyan-600 border border-cyan-600 font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0 hover:text-white hover:border-transparent'
