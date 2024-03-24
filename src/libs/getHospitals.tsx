@@ -1,11 +1,11 @@
-export default async function getHosptials() {
+export default async function getMassages() {
     
     // add timeout for loading delay testing
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    const response = await fetch("https://vaccine-app-backend.vercel.app/api/v1/hospitals");
+    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/massages`);
     if (!response.ok) {
-        throw new Error("Failed to fetch hospitals")
+        throw new Error("Failed to fetch massages")
     }
 
 

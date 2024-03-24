@@ -1,27 +1,40 @@
-interface HospitalItem {
-    _id: string,
-    name: string,
-    address: string,
-    district: string,
-    province: string,
-    postalcode: string,
-    tel: string,
-    picture: string,
-    __v: number,
-    id: string
-  }
-  
-  interface HospitalJson {
-    success: boolean,
-    count: number,
-    pagination: Object,
-    data: HospitalItem[]
-  }
+export interface HospitalItem {
+  _id: string,
+  name: string,
+  address: string,
+  district: string,
+  province: string,
+  postalcode: string,
+  tel: string,
+  picture: string,
+  __v: number,
+  id: string
+}
 
-  interface BookingItem {
-    name: string,
-    surname: string,
-    id: string,
-    hospital: string,
-    bookDate: string
-  }
+export interface HospitalJson {
+  success: boolean,
+  count: number,
+  pagination: Object,
+  data: HospitalItem[]
+}
+
+export interface BookingItem {
+  name: string,
+  surname: string,
+  id: string,
+  hospital: string,
+  bookDate: string
+}
+
+export interface RegisterJson {
+  name: string,
+  telephone: string,
+  email: string,
+  role: string,
+  password: string
+}
+
+export enum Role {
+  User = 'user',
+  Admin = 'admin'
+}
