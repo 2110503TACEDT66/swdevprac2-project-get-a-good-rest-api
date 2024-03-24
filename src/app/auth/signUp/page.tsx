@@ -4,6 +4,7 @@ import userRegister from "@/libs/userRegister"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Role } from "../../../../interface"
+import Link from "next/link"
 
 export default function Page() {
 
@@ -41,6 +42,7 @@ export default function Page() {
             <TextField id="password" label="password" variant="standard" type="password" onChange={(e) => setPassword(e.target.value)}/>
             <TextField id="passwordConfirm" label="confirm password" variant="standard" type="password" onChange={(e) => setPasswordConfirm(e.target.value)}/>
             <button onClick={() => onSubmit()} className="p-4 bg-blue-200 m-3 rounded">Register</button>
+            <h2>If you already have account <Link href={"/auth/signIn"} className="text-blue-600">Sign-In</Link></h2>
         </div>
     )
 }

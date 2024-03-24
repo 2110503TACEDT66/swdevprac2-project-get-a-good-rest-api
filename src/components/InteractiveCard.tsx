@@ -1,6 +1,6 @@
 'use client'
 
-export default function InteractiveCard({ children, hospitalName }: { children: React.ReactNode, hospitalName: string }) {
+export default function InteractiveCard({ children }: { children: React.ReactNode }) {
     function onCardMouseAction(event: React.SyntheticEvent) {
         if (event.type === "mouseover") {
             event.currentTarget.classList.remove("shadow-lg");

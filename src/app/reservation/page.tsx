@@ -10,7 +10,7 @@ import { addBooking } from "@/redux/features/bookSlice";
 import dayjs, { Dayjs } from "dayjs";
 import { useSession } from "next-auth/react";
 
-export default function Booking() {
+export default function Reservation() {
 
   const { data: session } = useSession();
   if (!session || !session.user.token) return null
