@@ -28,7 +28,7 @@ export const authOptions: AuthOptions = {
                 if (userProfile) {
                     // Any object returned will be saved in `user` property of the JWT
                     // console.log("authorize", userProfile)
-                    return { ...userProfile, ...user }
+                    return {...userProfile, ...user}
                 } else {
                     // If you return null then an error will be displayed advising the user to check their details.
                     return null

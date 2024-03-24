@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import InteractiveCard from './InteractiveCard';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import { useSession } from 'next-auth/react';
+import { Role } from '../../interface';
+import deleteMassage from '@/libs/deleteMassage';
+import editMassage from '@/libs/editMassage';
 
-import { SyntheticEvent, useState } from 'react';
+export default function Card({ massageName, imgSrc, massageId }: { massageName: string, imgSrc: string, massageId: string }) {
 
-export default function Card({ massageName, imgSrc }: { massageName: string, imgSrc: string }) {
-
-    const [rating, setRating] = useState(5);
-
+    const {data:session} = useSession();
+    
     return (
         <InteractiveCard>
             <div className="w-full h-[70%] relative">
@@ -20,8 +20,14 @@ export default function Card({ massageName, imgSrc }: { massageName: string, img
             </div>
             <div className="h-[30%] flex flex-col justify-center items-center">
                 <h1 className="text-xl mb-2">{massageName}</h1>
-                
-                {/* <p className='text-white p-1 bg-black rounded-xl w-[110px] flex justify-center items-center cursor-pointer'>Read more</p> */}
+                { session?.user.data.role === Role.Admin ?
+                    <div className='flex gap-2'>
+                        <p className='p-2 bg-yellow-400 rounded-xl w-[75px]' onClick={(e) => {e.preventDefault();alert("Edit!")}}>Edit</p>
+                        <p className='p-2 bg-red-500 rounded-xl w-[75px]' onClick={(e) => { e.preventDefault(); 
+                            e.currentTarget.closest("a")?.remove(); deleteMassage(massageId)}} >Delete</p>
+                    </div>
+                    : null
+                }
             </div>
         </InteractiveCard>
     );
