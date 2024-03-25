@@ -17,16 +17,19 @@ export default function Massage() {
 
     return (
         <main className="text-center p-5">
+            <h1 className="text-xl font-medium">Select Your Massage</h1>
             {
                 session?.user.data.role === "admin"
                 ? (
-                    <ModalButton text="Create new massage">
+                    <div className="mt-5">
+                       <ModalButton text="Create new massage">
                         {<MassageForm isUpdate={false} id={null}/>}
-                    </ModalButton>
+                        </ModalButton> 
+                    </div>
+                    
                 )
                 : null
             }
-            <h1 className="text-xl font-medium">Select Your Massage</h1>
             <Suspense fallback={<p>Loading...<LinearProgress /></p>}>
                 {massageItems && <MassageCatalog massages={massageItems} />}
             </Suspense>

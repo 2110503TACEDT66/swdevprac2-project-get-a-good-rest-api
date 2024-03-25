@@ -9,25 +9,25 @@ export default async function TopMenu() {
     const session = await getServerSession(authOptions);
 
     return (
-        <div className="h-[80px] bg-green-800 fixed top-0 left-0 right-0 z-30 flex flex-row justify-between">
+        <div className="h-[80px] bg-[#DBE7C9] fixed top-0 left-0 right-0 z-30 flex flex-row justify-between">
                 <Link href='/' className='flex justify-center items-center m-3'>
                     <Image src={'/img/logo1.png'} className="h-[100%] w-auto"
                         alt='logo' width={0} height={0} sizes='100vh' />
-                    <div className='px-8 text-xl text-white'>Massage with Girl</div>
+                    <div className='px-8 text-xl text-[#426B1F]'>Massage with Girl</div>
                     <div>
                         {
-                            session ? <p className='text-gray-300'>Welcome, {session.user.data.name}</p>:null
+                            session ? <p className='text-gray-600'>Welcome, {session.user.data.name}</p>:null
                         }
                     </div>
                 </Link>
                 <div className='flex'>
                     <div className='flex'>
-                    <TopMenuItem title='Reservation' pageRef='/reservation'/>
+                    <TopMenuItem title='Massage' pageRef='/massage'/>
                     <TopMenuItem title='My Reservation' pageRef='/myreservation'/>
                     <div className='w-[150px] flex justify-center items-center'>
                        {
-                        session ? <Link href='/api/auth/signout' className='flex justify-center items-center m-3 bg-stone-50 text-green-800 px-6 py-2 rounded-xl no-underline'><p>Sign-Out</p></Link>
-                            : <Link href='/api/auth/signin' className='flex justify-center items-center m-3 bg-stone-50 text-green-800 px-6 py-2 rounded-xl no-underline'><p>Sign-In</p></Link>
+                        session ? <Link href='/api/auth/signout' className='flex justify-center items-center m-3 bg-[#426B1F] text-[#FFFFFF] px-6 py-2 rounded-xl no-underline'><p>Sign-Out</p></Link>
+                            : <Link href='/api/auth/signin' className='flex justify-center items-center m-3 bg-[#426B1F] text-[#FFFFFF] px-6 py-2 rounded-xl no-underline'><p>Sign-In</p></Link>
                         } 
                     </div>
                     

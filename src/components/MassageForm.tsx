@@ -65,7 +65,7 @@ export default function MassageForm({isUpdate, id}: {isUpdate: boolean, id: stri
     }
 
     return (
-        <div className="flex flex-col items-center bg-white w-[500px]">
+        <div className="flex flex-col items-center bg-white w-[500px] py-8 px-4 gap-4 rounded-xl">
             <TextField id="name" label="name" variant="standard" type="text" value={name} onChange={(e) => (setName(e.target.value))} />
             <TextField id="description" label="description" variant="standard" type="text" value={description} onChange={(e) => (setDescription(e.target.value))} />
             <TextField id="address" label="address" variant="standard" type="text" value={address} onChange={(e) => (setAddress(e.target.value))} />
@@ -75,7 +75,7 @@ export default function MassageForm({isUpdate, id}: {isUpdate: boolean, id: stri
             <TextField id="tel" label="tel" variant="standard" type="text" value={tel} onChange={(e) => (setTel(e.target.value))} />
             <TextField id="picture" label="picture" variant="standard" type="text" value={picture} onChange={(e) => (setPicture(e.target.value))} />
 
-            <button className="p-2 bg-green-400" onClick={(e) => { e.stopPropagation(); onSubmit(); }}>{isUpdate ? "Update" : "Create"}</button>
+            <button className="px-4 py-2 bg-[#426B1F] text-[#FFFFFF] rounded-xl transition hover:bg-[#DBE7C9] hover:text-[#426B1F]" onClick={(e) => { e.stopPropagation(); onSubmit(); }}>{isUpdate ? "Update" : "Create"}</button>
         </div>
     )
 

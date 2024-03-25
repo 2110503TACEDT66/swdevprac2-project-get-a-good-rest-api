@@ -30,7 +30,7 @@ export default function Card({ massageName, imgSrc, massageId }: { massageName: 
                         <ModalButton text='Edit'>
                             <MassageForm isUpdate={true} id={massageId}/>
                         </ModalButton>
-                        <p className='p-2 bg-red-500 rounded-xl w-[75px]' onClick={(e) => { e.preventDefault(); 
+                        <p className='p-2 bg-red-500 rounded-xl w-[75px] text-[#FFFFFF]' onClick={(e) => { e.preventDefault(); 
                             dispatch(deleteMassageReducer(massageId))}} >Delete</p>
                     </div>
                     : null
