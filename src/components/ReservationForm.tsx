@@ -22,14 +22,16 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
 
     const [massage, setMassage] = useState<string>("")
     const [datePicker, setDatePicker] = useState<Dayjs | null>(null)
+    const [resertionID, setReservationID] = useState<string>("")
 
     useEffect(() => {
         if (isUpdate) {
             if (id === null) return;
             const reservationTarget = reservationItems.find((reservation) => reservation.id === id)
             if (reservationTarget) {
-                setMassage(reservationTarget.massage.id)
+                setMassage(reservationTarget.massage._id)
                 setDatePicker(dayjs(reservationTarget.apptDate))
+                setReservationID(reservationTarget._id)
             }
         }
     }, [])
@@ -48,8 +50,8 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
                 tel: "",
                 id: massage
             },
-            id: "",
-            _id: "",
+            id: resertionID,
+            _id: resertionID,
             __v: 0
         }
 
@@ -73,8 +75,8 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
                         }
                     </Select>
                     <DateReserve onDateChange={(value: Dayjs) => {
-                        setDatePicker(value)
-                    }} />
+                        setDatePicker(value);
+                    }} defaultDate={datePicker} />
 
                     <button name="Book Vaccine" className="bg-white p-2 rounded-lg shadow-lg" onClick={onSumbit}>Reserve Massage</button>
                 </div>
