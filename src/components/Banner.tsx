@@ -16,12 +16,12 @@ export default function Banner() {
     return (
         <div className="block m-0 w-full h-[500px] relative" onClick={() => setIndex(index+1)}>
             
-            <Image src={coverList[index%4]}
+            <Image src="/img/massasge.jpg"
             alt = 'cover'
             sizes='100vw'
             width={0}
             height={0}
-            className="absolute w-full h-[500px] object-cover z-10 filter brightness-[60%]"
+            className="absolute w-full h-[500px] object-cover z-10 filter brightness-[50%]"
             priority
             />
 
