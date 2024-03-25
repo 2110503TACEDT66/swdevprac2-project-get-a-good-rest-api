@@ -21,19 +21,15 @@ export default function Banner() {
             sizes='100vw'
             width={0}
             height={0}
-            className="absolute w-full h-[500px] object-cover z-10 filter brightness-[70%]"
+            className="absolute w-full h-[500px] object-cover z-10 filter brightness-[60%]"
             priority
             />
 
-            <div className="relative top-[175px] z-20 text-center text-white text-2xl drop-shadow-[5px_5px_5px_#000000]">
-                <h1 className='text-6xl font-bold mb-4'>Vaccine Service Center</h1>
-                <h3 className='text-3xl'>ข้อความประชาสัมพันธ์การให้บริการวัคซีน</h3>
+            <div className="relative top-[175px] z-20 text-center text-white text-2xl drop-shadow-[2px_2px_2px_#000000]">
+                <h1 className='text-6xl font-bold mb-4'>Massage with Girl</h1>
+                <h3 className='text-3xl'>เราคืออาบ อบ นวดที่ดีที่สุดในย่าน พัฒนาการ อ่อนนุช ศรีนครินทร์</h3>
             </div>
-            {/* {
-                session ? <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-300 text-xl'>Welcome {session.user?.data.name}</div>
-                    : null
-            } */}
-            <button className='bg-white text-cyan-600 border border-cyan-600 font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0 hover:text-white hover:border-transparent'
+            <button className='bg-green-600 text-stone-50 hover:text-green-600 hover:bg-stone-50 transition-all p-4 rounded-2xl z-30 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-24'
                 onClick={(e) => { e.stopPropagation(); router.push('/massage') }}>
                 Select Your Massage
             </button>
