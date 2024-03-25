@@ -5,6 +5,9 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
+    fontFamily: {
+      'tae': ['Inter','Kanit'],
+    },
     extend: {},
   },
   plugins: [],
