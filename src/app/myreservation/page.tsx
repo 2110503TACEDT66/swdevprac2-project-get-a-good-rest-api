@@ -2,8 +2,8 @@ import BookingList from "@/components/ReservationList";
 
 export default function MyBook() {
     return (
-        <main>
+        <div className="p-2">
             <BookingList />
-        </main>
+        </div>
     )
 }
