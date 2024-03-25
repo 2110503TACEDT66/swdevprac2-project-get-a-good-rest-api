@@ -1,15 +1,20 @@
 "use client"
-
 import Image from 'next/image';
 import InteractiveCard from './InteractiveCard';
 import { useSession } from 'next-auth/react';
 import { Role } from '../../interface';
-import deleteMassage from '@/libs/deleteMassage';
-import editMassage from '@/libs/editMassage';
+import ModalButton from './ModalButton';
+import MassageForm from './MassageForm';
+
+import { useAppSelector, AppDispatch } from '@/redux/store';
+import { useDispatch } from 'react-redux';
+
+import { deleteMassageReducer } from '@/redux/features/massageSlice';
 
 export default function Card({ massageName, imgSrc, massageId }: { massageName: string, imgSrc: string, massageId: string }) {
 
     const {data:session} = useSession();
+    const dispatch = useDispatch<AppDispatch>()
     
     return (
         <InteractiveCard>
@@ -22,9 +27,11 @@ export default function Card({ massageName, imgSrc, massageId }: { massageName: 
                 <h1 className="text-xl mb-2">{massageName}</h1>
                 { session?.user.data.role === Role.Admin ?
                     <div className='flex gap-2'>
-                        <p className='p-2 bg-yellow-400 rounded-xl w-[75px]' onClick={(e) => {e.preventDefault();alert("Edit!")}}>Edit</p>
+                        <ModalButton text='Edit'>
+                            <MassageForm isUpdate={true} id={massageId}/>
+                        </ModalButton>
                         <p className='p-2 bg-red-500 rounded-xl w-[75px]' onClick={(e) => { e.preventDefault(); 
-                            e.currentTarget.closest("a")?.remove(); deleteMassage(massageId)}} >Delete</p>
+                            dispatch(deleteMassageReducer(massageId))}} >Delete</p>
                     </div>
                     : null
                 }
