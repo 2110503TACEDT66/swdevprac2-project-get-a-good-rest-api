@@ -22,6 +22,22 @@ export interface UserProfile {
     __v: number,
   }
 }
+
+export interface ReservationItem {
+  apptDate: string,
+  user: string,
+  massage: string,
+  _id: string,
+  __v: number,
+  id: string
+}
+
+export interface ReservationJson {
+  success: boolean,
+  count: number,
+  data: ReservationItem[]
+}
+
 export interface MassageItem {
   name: string,
   address: string,
@@ -31,6 +47,7 @@ export interface MassageItem {
   tel: string,
   picture: string,
   description: string,
+  reservation: ReservationItem[],
   _id: string,
   __v: number,
   id: string
