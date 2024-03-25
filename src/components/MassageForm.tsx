@@ -5,7 +5,7 @@ import { MassageItem } from "../../interface"
 
 import { useAppSelector, AppDispatch } from "@/redux/store"
 import { useDispatch } from "react-redux"
-import { editMassageReducer, addMassageReducer } from "@/redux/features/massageSlice"
+import { updateMassageReducer, addMassageReducer } from "@/redux/features/massageSlice"
 
 export default function MassageForm({isUpdate, id}: {isUpdate: boolean, id: string | null}) {
 
@@ -57,7 +57,7 @@ export default function MassageForm({isUpdate, id}: {isUpdate: boolean, id: stri
         if (isUpdate) {
             // update data
             if (id === null) return console.log("id is null while editing massage");
-            dispatch(editMassageReducer(data))
+            dispatch(updateMassageReducer(data))
         } else {
             // create data   
             dispatch(addMassageReducer(data))

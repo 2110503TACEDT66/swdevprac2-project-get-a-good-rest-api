@@ -4,7 +4,7 @@ import { store } from "../store";
 
 import getMassages from "@/libs/getMassages";
 import createMassage from "@/libs/createMassage";
-import editMassage from "@/libs/editMassage";
+import updateMassage from "@/libs/updateMassage";
 import deleteMassage from "@/libs/deleteMassage";
 
 type MassageState = {
@@ -28,10 +28,10 @@ const massageSlice = createSlice({
             state.massageItems = remainMassage
             createMassage(action.payload)
         },
-        editMassageReducer: (state, action: PayloadAction<MassageItem>) => {
+        updateMassageReducer: (state, action: PayloadAction<MassageItem>) => {
             state.massageItems = state.massageItems.map((massage) => {
                 if (massage.id === action.payload.id) {
-                    editMassage(massage.id, action.payload)
+                    updateMassage(massage.id, action.payload)
                     return action.payload
                 }
                 return massage
@@ -44,7 +44,7 @@ const massageSlice = createSlice({
     },
 });
 
-export const { setMassageReducer, addMassageReducer, editMassageReducer, deleteMassageReducer } = massageSlice.actions
+export const { setMassageReducer, addMassageReducer, updateMassageReducer, deleteMassageReducer } = massageSlice.actions
 
 export default massageSlice.reducer
 

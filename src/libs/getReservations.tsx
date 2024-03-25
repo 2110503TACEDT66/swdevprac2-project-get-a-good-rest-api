@@ -1,11 +1,12 @@
+"use server"
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-export default async function getReservation(id:string) {
+export default async function getReservations() {
 
     const session = await getServerSession(authOptions);
 
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/reservations/${id}`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/reservations/`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -14,7 +15,7 @@ export default async function getReservation(id:string) {
     });
 
     if (!response.ok) {
-        throw new Error("Failed to get reservation")
+        throw new Error("Failed to get reservations")
     }
 
     return await response.json();
