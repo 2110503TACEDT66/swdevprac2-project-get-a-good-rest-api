@@ -26,8 +26,8 @@ export default async function TopMenu() {
                     <TopMenuItem title='My Reservation' pageRef='/myreservation'/>
                     <div className='w-[150px] flex justify-center items-center'>
                        {
-                        session ? <Link href='/api/auth/signout' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-8 py-3 rounded-xl no-underline'><p>Sign-Out</p></Link>
-                            : <Link href='/api/auth/signin' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-8 py-3 rounded-xl no-underline'><p>Sign-In</p></Link>
+                        session ? <Link href='/api/auth/signout' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-6 py-2 rounded-xl no-underline'><p>Sign-Out</p></Link>
+                            : <Link href='/api/auth/signin' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-6 py-2 rounded-xl no-underline'><p>Sign-In</p></Link>
                         } 
                     </div>
                     

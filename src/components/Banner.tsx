@@ -25,9 +25,9 @@ export default function Banner() {
             priority
             />
 
-            <div className="relative top-[175px] z-20 text-center text-white text-2xl drop-shadow-[2px_2px_2px_#000000]">
-                <h1 className='text-6xl font-bold mb-4'>Massage with Girl</h1>
-                <h3 className='text-3xl'>เราคืออาบ อบ นวดที่ดีที่สุดในย่าน พัฒนาการ อ่อนนุช ศรีนครินทร์</h3>
+            <div className="relative top-[175px] z-20 text-center text-white text-2xl">
+                <h1 className='text-5xl font-bold mb-8'>Massage with Girl</h1>
+                <h3 className='text-2xl'>เราคืออาบ อบ นวดที่ดีที่สุดในย่าน พัฒนาการ อ่อนนุช ศรีนครินทร์</h3>
             </div>
             <button className='bg-green-600 text-stone-50 hover:text-green-600 hover:bg-stone-50 transition-all p-4 rounded-2xl z-30 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-24'
                 onClick={(e) => { e.stopPropagation(); router.push('/massage') }}>
