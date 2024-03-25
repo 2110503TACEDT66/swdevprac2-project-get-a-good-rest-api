@@ -24,10 +24,14 @@ export default function Massage() {
                 <h1>Select Your Massage</h1>
             </TextHeader>
             </div>
+
+            <Suspense fallback={<p>Loading...<LinearProgress /></p>}>
+                {massageItems && <MassageCatalog massages={massageItems} />}
+            </Suspense>            
             {
                 session?.user.data.role === "admin"
                 ? (
-                    <div className="mt-5">
+                    <div className="mt-20">
                        <ModalButton text="Create new massage">
                         {<MassageForm isUpdate={false} id={null}/>}
                         </ModalButton> 
@@ -36,9 +40,6 @@ export default function Massage() {
                 )
                 : null
             }
-            <Suspense fallback={<p>Loading...<LinearProgress /></p>}>
-                {massageItems && <MassageCatalog massages={massageItems} />}
-            </Suspense>
         </main>
     )
 }
