@@ -4,34 +4,31 @@ import MassageCatalog from "@/components/MassageCatalog";
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
 import { useState, useEffect } from "react";
-import { MassageJson } from "../../../../interface";
 import { useSession } from "next-auth/react";
+import ModalButton from "@/components/ModalButton";
+import MassageForm from "@/components/MassageForm";
+
+import { useAppSelector } from "@/redux/store";
 
 export default function Massage() {
-
-    const [massages, setMassages] = useState(null)
-
-    const {data:session} = useSession()
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await getMassages();
-            setMassages(res)
-        }
-
-        fetchData()
-    }, [])
+    
+    const { data: session } = useSession()
+    const massageItems = useAppSelector(state => state.massageSlice.massageItems)    
 
     return (
         <main className="text-center p-5">
             {
                 session?.user.data.role === "admin"
-                ? <button className="p-4 bg-green-200">Create Massage</button>
+                ? (
+                    <ModalButton text="Create new massage">
+                        {<MassageForm isUpdate={false} id={null}/>}
+                    </ModalButton>
+                )
                 : null
             }
             <h1 className="text-xl font-medium">Select Your Massage</h1>
             <Suspense fallback={<p>Loading...<LinearProgress /></p>}>
-                {massages && <MassageCatalog massagesJson={massages} />}
+                {massageItems && <MassageCatalog massages={massageItems} />}
             </Suspense>
         </main>
     )

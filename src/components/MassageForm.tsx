@@ -1,12 +1,14 @@
 "use client"
 import { useState, useEffect } from "react"
 import { TextField } from "@mui/material"
-import getMassage from "@/libs/getMassage"
-import editMassage from "@/libs/editMassage"
 import createMassage from "@/libs/createMassage"
 import { MassageItem } from "../../interface"
 
-export default function MassageForm(isUpdate:boolean, id: string | null) {
+import { useAppSelector, AppDispatch } from "@/redux/store"
+import { useDispatch } from "react-redux"
+import { editMassageReducer, addMassageReducer } from "@/redux/features/massageSlice"
+
+export default function MassageForm({isUpdate, id}: {isUpdate: boolean, id: string | null}) {
 
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
@@ -17,24 +19,24 @@ export default function MassageForm(isUpdate:boolean, id: string | null) {
     const [tel, setTel] = useState("")
     const [picture, setPicture] = useState("no-photo")
 
+    const massageItems = useAppSelector(state => state.massageSlice.massageItems)
+    const dispatch = useDispatch<AppDispatch>()
+
     // fetching data from the server
     if (isUpdate) {
-        useEffect(() => {
-            const fetchMassage = async () => {
-                if (id === null) return
-                const res = await getMassage(id);
-                
-                setName(res.name)
-                setDescription(res.description)
-                setAddress(res.address)
-                setDistrict(res.district)
-                setProvince(res.province)
-                setPostalcode(res.postalcode)
-                setTel(res.tel)
-                setPicture(res.picture)
-            }
-            fetchMassage()
-        }, [])
+        
+        const massageTarget = massageItems.find((massage) => massage.id === id)
+        if (massageTarget) {
+            setName(massageTarget.name)
+            setDescription(massageTarget.description)
+            setAddress(massageTarget.address)
+            setDistrict(massageTarget.district)
+            setProvince(massageTarget.province)
+            setPostalcode(massageTarget.postalcode)
+            setTel(massageTarget.tel)
+            setPicture(massageTarget.picture)
+        }
+
     }
 
     const onSubmit = async () => {
@@ -47,22 +49,23 @@ export default function MassageForm(isUpdate:boolean, id: string | null) {
             postalcode: postalcode,
             tel: tel,
             picture: picture,
-            _id: "",
+            _id: (id === null) ? "" : id,
             __v: 0,
-            id: ""
+            id: (id === null) ? "" : id,
+            reservation: []
         }
         if (isUpdate) {
             // update data
             if (id === null) return console.log("id is null while editing massage");
-            await editMassage(id, data)
+            dispatch(editMassageReducer(data))
         } else {
-            // create data
-            await createMassage(data)
+            // create data   
+            dispatch(addMassageReducer(data))
         }
     }
 
     return (
-        <div>
+        <div className="flex flex-col items-center bg-white w-[500px]">
             <TextField id="name" label="name" variant="standard" type="text" value={name} onChange={(e) => (setName(e.target.value))} />
             <TextField id="description" label="description" variant="standard" type="text" value={description} onChange={(e) => (setDescription(e.target.value))} />
             <TextField id="address" label="address" variant="standard" type="text" value={address} onChange={(e) => (setAddress(e.target.value))} />
@@ -72,7 +75,7 @@ export default function MassageForm(isUpdate:boolean, id: string | null) {
             <TextField id="tel" label="tel" variant="standard" type="text" value={tel} onChange={(e) => (setTel(e.target.value))} />
             <TextField id="picture" label="picture" variant="standard" type="text" value={picture} onChange={(e) => (setPicture(e.target.value))} />
 
-            <button className="p-2 bg-green-400" onClick={() => onSubmit()}>{isUpdate ? "Update" : "Create"}</button>
+            <button className="p-2 bg-green-400" onClick={(e) => { e.stopPropagation(); onSubmit(); }}>{isUpdate ? "Update" : "Create"}</button>
         </div>
     )
 

@@ -1,15 +1,17 @@
 "use client"
-
 import Image from 'next/image';
 import InteractiveCard from './InteractiveCard';
 import { useSession } from 'next-auth/react';
 import { Role } from '../../interface';
-import deleteMassage from '@/libs/deleteMassage';
-import editMassage from '@/libs/editMassage';
+import { useAppSelector, AppDispatch } from '@/redux/store';
+import { useDispatch } from 'react-redux';
+
+import { deleteMassageReducer } from '@/redux/features/massageSlice';
 
 export default function Card({ massageName, imgSrc, massageId }: { massageName: string, imgSrc: string, massageId: string }) {
 
     const {data:session} = useSession();
+    const dispatch = useDispatch<AppDispatch>()
     
     return (
         <InteractiveCard>
@@ -24,7 +26,7 @@ export default function Card({ massageName, imgSrc, massageId }: { massageName: 
                     <div className='flex gap-2'>
                         <p className='p-2 bg-yellow-400 rounded-xl w-[75px]' onClick={(e) => {e.preventDefault();alert("Edit!")}}>Edit</p>
                         <p className='p-2 bg-red-500 rounded-xl w-[75px]' onClick={(e) => { e.preventDefault(); 
-                            e.currentTarget.closest("a")?.remove(); deleteMassage(massageId)}} >Delete</p>
+                            dispatch(deleteMassageReducer(massageId))}} >Delete</p>
                     </div>
                     : null
                 }
