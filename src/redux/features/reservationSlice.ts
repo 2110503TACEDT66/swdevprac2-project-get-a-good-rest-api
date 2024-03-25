@@ -35,11 +35,14 @@ const reservationSlice = createSlice({
         },
         updateReservationReducer: (state, action: PayloadAction<ReservationItem>) => {
             state.reservationItems = state.reservationItems.map((reservation) => {
-                if (reservation.id === action.payload.id) {
+                if (reservation._id === action.payload.id) {
                     updateReservation(reservation._id, action.payload)
                     return action.payload
                 }
                 return reservation
+            })
+            getReservations().then((res: ReservationJson) => {
+                store.dispatch(setReservationReducer(res.data))
             })
         },
         deleteReservationReducer: (state, action: PayloadAction<string>) => {
