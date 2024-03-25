@@ -7,6 +7,7 @@ import getReservation from "@/libs/getReservation";
 import createReservation from "@/libs/createReservation";
 import updateReservation from "@/libs/updateReservation";
 import deleteReservation from "@/libs/deleteReservation";
+import session from "redux-persist/lib/storage/session";
 
 type ReservationState = {
     reservationItems: ReservationItem[]
@@ -24,11 +25,13 @@ const reservationSlice = createSlice({
             state.reservationItems = action.payload
         },
         addReservationReducer: (state, action: PayloadAction<ReservationItem>) => {
-            createReservation(action.payload).then((res) => {
-                getReservations().then((res:ReservationJson) => {
-                    store.dispatch(setReservationReducer(res.data))
+            if (state.reservationItems.length < 3) {      
+                createReservation(action.payload).then((res) => {
+                    getReservations().then((res:ReservationJson) => {
+                        store.dispatch(setReservationReducer(res.data))
+                    })
                 })
-            })
+            }
         },
         updateReservationReducer: (state, action: PayloadAction<ReservationItem>) => {
             state.reservationItems = state.reservationItems.map((reservation) => {
