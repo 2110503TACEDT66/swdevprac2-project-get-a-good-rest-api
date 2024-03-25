@@ -26,7 +26,13 @@ export interface UserProfile {
 export interface ReservationItem {
   apptDate: string,
   user: string,
-  massage: string,
+  massage: {
+    _id: string,
+    name: string,
+    province: string,
+    tel: string,
+    id: string
+  },
   _id: string,
   __v: number,
   id: string

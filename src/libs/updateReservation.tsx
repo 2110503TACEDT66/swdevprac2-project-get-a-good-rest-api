@@ -3,11 +3,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { ReservationItem } from "../../interface";
 
-export default async function updateReservation(reservationData: ReservationItem) {
+export default async function updateReservation(id:string, reservationData: ReservationItem) {
 
     const session = await getServerSession(authOptions);
 
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/reservations/`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/reservations/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

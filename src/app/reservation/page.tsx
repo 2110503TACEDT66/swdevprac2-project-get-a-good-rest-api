@@ -1,12 +1,15 @@
 "use client"
 import DateReserve from "@/components/DateReserve"
-import { Select, MenuItem, TextField } from "@mui/material";
+import { Select, MenuItem } from "@mui/material";
+
+import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
-import { useState } from "react";
+import { addReservationReducer } from "@/redux/features/reservationSlice";
 
 import dayjs, { Dayjs } from "dayjs";
-import { useSession } from "next-auth/react";
+import { ReservationItem } from "../../../interface";
 
 export default function Reservation() {
 
@@ -20,8 +23,26 @@ export default function Reservation() {
   const [datePicker, setDatePicker] = useState<Dayjs | null>(null)
 
   const onSumbit = async () => {
-    if (!massage || !datePicker) return
     
+    if (!massage || !datePicker) return
+
+    const data:ReservationItem = {
+      apptDate: dayjs(datePicker).format("YYYY-MM-DD"),
+      user: session.user.data._id,
+      massage: {
+        _id: massage,
+        name: "",
+        province: "",
+        tel: "",
+        id: massage
+      },
+      id: "",
+      _id: "",
+      __v: 0
+    }
+
+    dispatch(addReservationReducer(data))
+
   }
 
   return (
@@ -31,8 +52,8 @@ export default function Reservation() {
           <h1 className="text-4xl font-semibold">Massage Reservation</h1>
           <Select variant="standard" name="hospital" id="hospital" className="h-[2em] w-[200px]" value={massage} onChange={(event) => setMassage(event.target.value)}>
             {
-              massageItems.map((massage) => (
-                <MenuItem key={massage.id} value={massage.id}>{massage.name}</MenuItem>
+              massageItems.map((massageItem) => (
+                <MenuItem key={massageItem.id} value={massageItem.id}>{massageItem.name}</MenuItem>
               ))
             }
           </Select>
@@ -41,7 +62,7 @@ export default function Reservation() {
           }} />
           <h1>{"massage = " + massage + " And date = " + datePicker}</h1>
 
-          <button name="Book Vaccine" className="bg-white p-2 rounded-lg shadow-lg">Book Vaccine</button>
+          <button name="Book Vaccine" className="bg-white p-2 rounded-lg shadow-lg" onClick={onSumbit}>Reserve Massage</button>
         </div>
       </div>
     </>
