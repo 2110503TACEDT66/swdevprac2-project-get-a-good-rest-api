@@ -9,7 +9,7 @@ export default async function TopMenu() {
     const session = await getServerSession(authOptions);
 
     return (
-        <div className="h-[75px] bg-white fixed top-0 left-0 right-0 z-30 border-t border-b border-gray-300 flex flex-row justify-between">
+        <div className="h-[80px] bg-white fixed top-0 left-0 right-0 z-30 border-t border-b border-gray-300 flex flex-row justify-between">
                 <Link href='/' className='flex justify-center items-center m-3'>
                     <Image src={'/img/logo1.png'} className="h-[100%] w-auto"
                         alt='logo' width={0} height={0} sizes='100vh' />
@@ -24,10 +24,13 @@ export default async function TopMenu() {
                     <div className='flex'>
                     <TopMenuItem title='Reservation' pageRef='/reservation'/>
                     <TopMenuItem title='My Reservation' pageRef='/myreservation'/>
-                    {
-                        session ? <Link href='/api/auth/signout' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-5 py-2 rounded-xl no-underline'><p>Sign-Out</p></Link>
-                            : <Link href='/api/auth/signin' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-5 py-2 rounded-xl no-underline'><p>Sign-In</p></Link>
-                    }
+                    <div className='w-[150px] flex justify-center items-center'>
+                       {
+                        session ? <Link href='/api/auth/signout' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-8 py-3 rounded-xl no-underline'><p>Sign-Out</p></Link>
+                            : <Link href='/api/auth/signin' className='flex justify-center items-center m-3 bg-green-600 text-stone-50 px-8 py-3 rounded-xl no-underline'><p>Sign-In</p></Link>
+                        } 
+                    </div>
+                    
                     </div>
             
                     
