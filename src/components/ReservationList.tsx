@@ -42,15 +42,13 @@ export default function BookingList() {
                             </div>
 
                             <div className="flex flex-row gap-5 justify-end">
-                                <ModalButton text="Edit Reservation">
-                            <ReservationForm isUpdate={true} id={reservation.id} />
-                        </ModalButton>
+                                <ModalButton text="Edit">
+                                    <ReservationForm isUpdate={true} id={reservation.id} />
+                                </ModalButton>
                                 <button className="rounded-md bg-red-600 hover:bg-red-800 transition px-3 py-1 text-white shadow-sm relative mt-10" onClick={() => dispatch(deleteReservationReducer(reservation._id))}>Cancel</button>
                             </div> 
                         </div>
-                        
-                        
-                     
+
                     </div>
                 ))
             ) : <h1>No Reservation data</h1>

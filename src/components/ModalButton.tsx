@@ -11,7 +11,7 @@ export default function ModalButton({ text, children }: { text:string, children:
 
     return (
         <div>
-            <button className="px-4 py-2 bg-[#426B1F] text-[#FFFFFF] rounded-xl transition hover:bg-[#DBE7C9] hover:text-[#426B1F]" onClick={(e) => {e.preventDefault(); handleOpen()}}>{text}</button>
+            <button className="rounded-md bg-yellow-600 hover:bg-yellow-800 transition px-3 py-1 text-white shadow-sm relative mt-10" onClick={(e) => {e.preventDefault(); handleOpen()}}>{text}</button>
             <Modal
                 open={open}
                 onClose={handleClose}
