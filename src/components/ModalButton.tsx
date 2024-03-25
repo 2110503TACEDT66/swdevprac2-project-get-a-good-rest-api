@@ -11,7 +11,7 @@ export default function ModalButton({ text, children }: { text:string, children:
 
     return (
         <div>
-            <button className="p-4 bg-green-200" onClick={handleOpen}>{text}</button>
+            <button className="p-4 bg-green-200" onClick={(e) => {e.preventDefault(); handleOpen()}}>{text}</button>
             <Modal
                 open={open}
                 onClose={handleClose}

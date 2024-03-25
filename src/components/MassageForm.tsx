@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
 import { TextField } from "@mui/material"
-import createMassage from "@/libs/createMassage"
 import { MassageItem } from "../../interface"
 
 import { useAppSelector, AppDispatch } from "@/redux/store"
@@ -20,24 +19,25 @@ export default function MassageForm({isUpdate, id}: {isUpdate: boolean, id: stri
     const [picture, setPicture] = useState("no-photo")
 
     const massageItems = useAppSelector(state => state.massageSlice.massageItems)
+
     const dispatch = useDispatch<AppDispatch>()
 
-    // fetching data from the server
-    if (isUpdate) {
-        
-        const massageTarget = massageItems.find((massage) => massage.id === id)
-        if (massageTarget) {
-            setName(massageTarget.name)
-            setDescription(massageTarget.description)
-            setAddress(massageTarget.address)
-            setDistrict(massageTarget.district)
-            setProvince(massageTarget.province)
-            setPostalcode(massageTarget.postalcode)
-            setTel(massageTarget.tel)
-            setPicture(massageTarget.picture)
+    useEffect(() => {
+        if (isUpdate) {
+            if (id === null) return ;
+            const massageTarget = massageItems.find((massage) => massage.id === id)
+            if (massageTarget) {
+                setName(massageTarget.name || "")
+                setDescription(massageTarget.description || "")
+                setAddress(massageTarget.address || "")
+                setDistrict(massageTarget.district || "")
+                setProvince(massageTarget.province || "")
+                setPostalcode(massageTarget.postalcode || "")
+                setTel(massageTarget.tel || "")
+                setPicture(massageTarget.picture)
+            }
         }
-
-    }
+    }, [])
 
     const onSubmit = async () => {
         const data:MassageItem = {
