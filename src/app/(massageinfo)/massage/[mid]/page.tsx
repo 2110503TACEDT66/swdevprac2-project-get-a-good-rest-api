@@ -4,14 +4,6 @@ import { MassageOne } from "../../../../../interface";
 
 export default async function HospitalDetailPage({ params }: { params: { mid: string } }) {
 
-    /**
-     * Mock Data for Demonstration Only
-     */
-
-    // const mockHospitalRepo = new Map()
-    // mockHospitalRepo.set('001', { name: "Chulalongkorn Hospital", img: "/img/chula.jpg" })
-    // mockHospitalRepo.set('002', { name: "Rajavithi Hospital", img: "/img/rajavithi.jpg" })
-    // mockHospitalRepo.set('003', { name: "Thammasat University Hospital", img: "/img/thammasat.jpg" })
     const massage:MassageOne = await getMassage(params.mid);
 
     return (
@@ -31,11 +23,8 @@ export default async function HospitalDetailPage({ params }: { params: { mid: st
                     <h1>{massage.data.postalcode}</h1>
                     <h1>{massage.data.tel}</h1>
                 </div>
+                <button></button>
             </div>
         </main>
     )
 }
-
-// export async function generateStaticParams() {
-//     return [{ cid: '001' }, { cid: '002' }, { cid: '003' }]
-// }
