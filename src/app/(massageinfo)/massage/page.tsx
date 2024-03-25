@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import ModalButton from "@/components/ModalButton";
 import MassageForm from "@/components/MassageForm";
+import TextHeader from "@/components/TextHeader";
 
 import { useAppSelector } from "@/redux/store";
 
@@ -17,7 +18,12 @@ export default function Massage() {
 
     return (
         <main className="text-center p-5">
-            <h1 className="text-xl font-medium">Select Your Massage</h1>
+
+            <div className="flex flex-col justify-center items-center mt-20">
+                 <TextHeader>
+                <h1>Select Your Massage</h1>
+            </TextHeader>
+            </div>
             {
                 session?.user.data.role === "admin"
                 ? (

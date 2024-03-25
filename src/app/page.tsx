@@ -1,11 +1,11 @@
 import Banner from '@/components/Banner'
-import PromteCard from '@/components/PromoteCard'
+import TextContainer from '@/components/TextContainer'
 
 export default function Home() {
   return (
-    <main>
+    <main >
         <Banner />
-        {/* <PromteCard/> */}
+        <TextContainer />       
     </main>
   )
 }
