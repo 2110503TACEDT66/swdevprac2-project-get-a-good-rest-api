@@ -81,7 +81,7 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
 
                     <button name="Book Vaccine" className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5" 
                     onClick={() => { 
-                        if (reservationItems.length >= 3) {
+                        if (reservationItems.length >= 3 && isUpdate === false) {
                             alert("You already have 3 reservations")
                             return ;
                         }
