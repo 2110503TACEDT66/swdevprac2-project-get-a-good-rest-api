@@ -8,7 +8,7 @@ export default function ModalButton({ text, children,color }: { text:string, chi
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
-
+    console.log(color)
     return (
         <div>
             <button className={`rounded-md bg-${color}-600 hover:bg-${color}-800 transition px-3 py-1 text-white shadow-sm relative mt-10`} onClick={(e) => {e.preventDefault(); handleOpen()}}>{text}</button>
