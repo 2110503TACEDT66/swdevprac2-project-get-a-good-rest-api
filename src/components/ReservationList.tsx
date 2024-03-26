@@ -17,7 +17,6 @@ export default function BookingList() {
     const reservationItems = useAppSelector(state => state.reservationSlice.reservationItems)
     const dispatch = useDispatch<AppDispatch>()
 
-    console.log(reservationItems)
     useEffect(() => {
         const fetchReservations = async () => {
             const reservations:ReservationJson = await getReservations();

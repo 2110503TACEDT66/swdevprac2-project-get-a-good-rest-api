@@ -10,8 +10,16 @@ import MassageForm from "@/components/MassageForm";
 import TextHeader from "@/components/TextHeader";
 
 import { useAppSelector } from "@/redux/store";
+import { store } from "@/redux/store";
+import { setMassageReducer } from "@/redux/features/massageSlice";
 
 export default function Massage() {
+
+    useEffect(() => {
+        getMassages().then((res) => {
+            store.dispatch(setMassageReducer(res.data))
+        })
+    }, [])
     
     const { data: session } = useSession()
     const massageItems = useAppSelector(state => state.massageSlice.massageItems)    

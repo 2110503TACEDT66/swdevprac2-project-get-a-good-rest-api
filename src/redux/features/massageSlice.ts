@@ -49,6 +49,6 @@ export const { setMassageReducer, addMassageReducer, updateMassageReducer, delet
 export default massageSlice.reducer
 
 // Fetch data and update initialState
-getMassages().then((res:MassageJson) => {
-    store.dispatch(setMassageReducer(res.data));
-});
+// getMassages().then((res:MassageJson) => {
+//     store.dispatch(setMassageReducer(res.data));
+// });

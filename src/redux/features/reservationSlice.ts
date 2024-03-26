@@ -17,6 +17,10 @@ const initialState: ReservationState = {
     reservationItems: []
 }
 
+// getReservations().then((res:ReservationJson) => {
+//     initialState.reservationItems = res.data
+// })
+
 const reservationSlice = createSlice({
     name: 'reservation',
     initialState,
@@ -57,6 +61,6 @@ export const { setReservationReducer, addReservationReducer, updateReservationRe
 export default reservationSlice.reducer
 
 // Fetch data and update initialState
-getReservations().then((res:ReservationJson) => {
-    store.dispatch(setReservationReducer(res.data))
-})
+// getReservations().then((res:ReservationJson) => {
+//     store.dispatch(setReservationReducer(res.data))
+// })
