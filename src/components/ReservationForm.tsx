@@ -27,7 +27,7 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
     useEffect(() => {
         if (isUpdate) {
             if (id === null) return;
-            const reservationTarget = reservationItems.find((reservation) => reservation.id === id)
+            const reservationTarget = reservationItems.find((reservation) => reservation._id === id)
             if (reservationTarget) {
                 setMassage(reservationTarget.massage._id)
                 setDatePicker(dayjs(reservationTarget.apptDate))
