@@ -1,13 +1,16 @@
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
 import TopMenuItem from './TopMenuItem';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { useSession } from 'next-auth/react';
 
-export default async function TopMenu() {
+export default function TopMenu() {
 
-    const session = await getServerSession(authOptions);
-    console.log(session);
+    // const session = await getServerSession(authOptions);
+    // console.log(session);
+    const {data: session} = useSession();
 
     return (
         <div className="h-[80px] bg-[#DBE7C9] fixed top-0 left-0 right-0 z-30 flex flex-row justify-between">
