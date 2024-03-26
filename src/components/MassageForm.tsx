@@ -54,6 +54,15 @@ export default function MassageForm({isUpdate, id}: {isUpdate: boolean, id: stri
             id: (id === null) ? "" : id,
             reservation: []
         }
+
+        // validate date
+        if (!name || !description || !address || !district || !province || !postalcode || !tel || !picture) return
+
+        if (name.length > 50) return alert("name is too long")
+        if (description.length > 500) return alert("description is too long")
+        if (postalcode.length > 5) return alert("postalcode is too long")
+
+        // update data
         if (isUpdate) {
             // update data
             if (id === null) return console.log("id is null while editing massage");
