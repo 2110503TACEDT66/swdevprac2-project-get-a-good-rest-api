@@ -11,21 +11,31 @@ export default async function MassageDetailPage({ params }: { params: { mid: str
         <>
         {
             massage !== undefined ? (
-                <main className="p-5">
-                    <div className="flex flex-row my-5">
+                <main className="p-5 items-center">
+                    <div className="flex flex-col my-5 items-center gap-8">
+                        <div className="relative">
                         <Image src={massage.picture == "no-photo" ? "/img/massage-default.jpg" : massage.picture}
                             alt="Product Picture"
-                            width={0} height={0} sizes="100vw"
-                            className="rounded-lg w-[30%] bg-black"
+                            width={400} height={400} sizes="100vw"
+                            className="rounded-lg bg-black"
                         />
-                        <div className="flex flex-col text-left text-lg m-5">
-                            <h1>{massage.name}</h1>
-                            <h1>{massage.description}</h1>
-                            <h1>{massage.address}</h1>
-                            <h1>{massage.district}</h1>
-                            <h1>{massage.province}</h1>
-                            <h1>{massage.postalcode}</h1>
-                            <h1>{massage.tel}</h1>
+                        </div>
+                        <div className="flex flex-col ml-5">
+                        <h1 className="text-4xl font-bold mb-4">{massage.name}</h1>
+                        <p className="text-lg mb-2">{massage.description}</p>
+                        <div className="grid grid-cols-2 gap-2 mb-4">
+                            <div>
+                            <p className="text-gray-600">Address:</p>
+                            <p>{massage.address}</p>
+                            <p>{massage.district}</p>
+                            <p>{massage.province}</p>
+                            <p>{massage.postalcode}</p>
+                            </div>
+                            <div>
+                            <p className="text-gray-600">Tel:</p>
+                            <p>{massage.tel}</p>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </main>
