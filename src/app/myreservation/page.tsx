@@ -1,11 +1,20 @@
 import ReservationList from "@/components/ReservationList";
 import ReservationForm from "@/components/ReservationForm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
-export default function MyBook() {
+export default async function MyBook() {
+
+    const session = await getServerSession(authOptions)
+
     return (
         <div className="p-2 flex flex-row justify-between items-center px-24 ">
             <ReservationList />
-            <ReservationForm isUpdate={false} id={null} />
+            {
+                session?.user.data.role === "admin" ?
+                <ReservationForm isUpdate={false} id={null} />
+                : null
+            }
         </div>
     )
 }
