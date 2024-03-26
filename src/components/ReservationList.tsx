@@ -10,6 +10,7 @@ import getReservations from "@/libs/getReservations"
 import { setReservationReducer } from "@/redux/features/reservationSlice"
 import { useEffect } from "react"
 import { ReservationJson } from "../../interface"
+import TextHeader from "./TextHeader"
 
 export default function BookingList() {
 
@@ -27,22 +28,23 @@ export default function BookingList() {
 
     return (
         <div className="m-5 flex flex-col gap-8">
+                <h1 className="text-3xl text-left border-b-2 border-[#426B1F] w-[500px] pb-4 text-[#426B1F] mb-5 ml-5">You have {reservationItems.length} Reservation(s)</h1>
         {
             reservationItems.length > 0 ? (
                 reservationItems.map((reservation) => (
 
-                    <div className="bg-[#fcf5dd] rounded-xl mx-5 my-2 h-[180px] flex overflow-hidden shadow-md" key={reservation._id}>
+                    <div className="bg-[#FFFFFF] rounded-xl mx-5 my-2 h-[180px] flex overflow-hidden shadow-md w-[800px]" key={reservation._id}>
                         <div className="w-[200px] h-full overflow-hidden">
                             <Image src={'/img/cover.jpg'} alt="Reservation image" width={0} height={0} sizes="10vw" className="w-[200px] h-full"/>
                         </div>
-                        <div className="p-6 flex flex-col">
+                        <div className="p-6 flex flex-col w-full">
                             <div>
-                                <div className="text-2xl">Date of Reservation : {reservation.apptDate}</div>
-                                <div className="text-xl">Massage : {reservation.massage.name}</div>
+                                <div className="text-xl">Date of Reservation : {reservation.apptDate}</div>
+                                <div className="text-lg text-gray-400">Massage : {reservation.massage.name}</div>
                             </div>
 
                             <div className="flex flex-row gap-5 justify-end">
-                                <ModalButton text="Edit">
+                                <ModalButton text="Edit" color="yellow" >
                                     <ReservationForm isUpdate={true} id={reservation.id} />
                                 </ModalButton>
                                 <button className="rounded-md bg-red-600 hover:bg-red-800 transition px-3 py-1 text-white shadow-sm relative mt-10" onClick={() => dispatch(deleteReservationReducer(reservation._id))}>Cancel</button>

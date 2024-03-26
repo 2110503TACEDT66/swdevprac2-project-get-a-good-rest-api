@@ -24,7 +24,7 @@ export default function SignInPage() {
 
     return (
         <div className="flex flex-col items-center justify-center mt-80"> 
-            <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-96 gap-4">
+            <div className="bg-[#FFFFFF] shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-96 gap-4">
                 <h1 className="text-2xl text-center mb-5">Welcome !</h1>
                     <TextField id="Username" label="Username" variant="standard" type="email" onChange={(e) => (setUsername(e.target.value))} className="border border-gray-300 rounded-md w-full focus:outline-none focus:border-green-500"/>
                     <TextField id="Password" label="Password" variant="standard" type="password" className="border border-gray-300 rounded-md w-full focus:outline-none focus:border-green-500"

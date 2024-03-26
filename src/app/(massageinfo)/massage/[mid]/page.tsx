@@ -7,7 +7,7 @@ export default async function HospitalDetailPage({ params }: { params: { mid: st
     const massage:MassageOne = await getMassage(params.mid);
 
     return (
-        <main className="text-center p-5">
+        <main className="p-5">
             <div className="flex flex-row my-5">
                 <Image src={massage.data.picture == "no-photo" ? "/img/massage-default.jpg" : massage.data.picture}
                     alt="Product Picture"
@@ -23,7 +23,6 @@ export default async function HospitalDetailPage({ params }: { params: { mid: st
                     <h1>{massage.data.postalcode}</h1>
                     <h1>{massage.data.tel}</h1>
                 </div>
-                <button></button>
             </div>
         </main>
     )

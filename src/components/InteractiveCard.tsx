@@ -18,7 +18,7 @@ export default function InteractiveCard({ children }: { children: React.ReactNod
     }
 
     return (
-        <div className="w-[320px] h-[340px] shadow-lg bg-white rounded-lg overflow-hidden text-center"
+        <div className="w-[320px] h-[400px] shadow-lg bg-[#FFFFFF] rounded-lg overflow-hidden"
             onMouseOver={(e) => onCardMouseAction(e)}
             onMouseOut={(e) => onCardMouseAction(e)}
             onClick={(e) => {e.stopPropagation();}}

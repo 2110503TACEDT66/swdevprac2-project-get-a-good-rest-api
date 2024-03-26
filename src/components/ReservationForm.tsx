@@ -64,10 +64,10 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
 
     return (
         <>
-            <div className="h-[calc(100vh-75px)] grid justify-center items-center">
-                <div className="bg-slate-100 rounded-lg space-x-5 space-y-4 px-10 py-10 flex flex-col justify-center items-center">
-                    <h1 className="text-4xl font-semibold">Massage Reservation</h1>
-                    <Select variant="standard" name="hospital" id="hospital" className="h-[2em] w-[200px]" value={massage} onChange={(event) => setMassage(event.target.value)}>
+            <div className="h-[calc(100vh-75px)] grid justify-center items-center w-[500px]">
+                <div className="bg-[#FFFFFF] shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-96 gap-4">
+                    <h1 className="text-2xl text-center mb-5">Massage Reservation</h1>
+                    <Select variant="standard" name="hospital" id="hospital" className="h-[2em] w-full" value={massage} onChange={(event) => setMassage(event.target.value)}>
                         {
                             massageItems.map((massageItem) => (
                                 <MenuItem key={massageItem.id} value={massageItem.id}>{massageItem.name}</MenuItem>
@@ -78,7 +78,7 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
                         setDatePicker(value);
                     }} defaultDate={datePicker} />
 
-                    <button name="Book Vaccine" className="bg-white p-2 rounded-lg shadow-lg" onClick={onSumbit}>Reserve Massage</button>
+                    <button name="Book Vaccine" className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5" onClick={onSumbit}>Reserve Massage</button>
                 </div>
             </div>
         </>

@@ -18,20 +18,30 @@ export default function Card({ massageName, imgSrc, massageId }: { massageName: 
     
     return (
         <InteractiveCard>
-            <div className="w-full h-[70%] relative">
+            <div className="w-full h-[60%] relative ">
                 <Image src={imgSrc}
                 alt = 'Product Picture'
-                fill = {true}/>
+                fill = {true}
+                />
+
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                    <p className="text-white text-lg font-semibold">{massageName}</p>
+                    <p className="text-gray-200 text-sm">
+                        ร้านนวดที่ดีที่สุดในย่าน พัฒนาการ อ่อนนุช ศรีนครินทร์
+                    </p>
+                </div>
             </div>
-            <div className="h-[30%] flex flex-col justify-center items-center">
-                <h1 className="text-xl mb-2">{massageName}</h1>
+            <div className="h-[40%] p-4">
+                <p className="text-gray-600 text-sm">
+                    ข้อมูลเพิ่มเติมเกี่ยวกับร้านนวด
+                </p>
                 { session?.user.data.role === Role.Admin ?
-                    <div className='flex gap-2'>
-                        <ModalButton text='Edit'>
+                    <div className='flex gap-2 justify-end items-end h-5/6'>
+                        <ModalButton text='Edit' color='yellow'>
                             <MassageForm isUpdate={true} id={massageId}/>
                         </ModalButton>
-                        <p className='p-2 bg-red-500 rounded-xl w-[75px] text-[#FFFFFF]' onClick={(e) => { e.preventDefault(); 
-                            dispatch(deleteMassageReducer(massageId))}} >Delete</p>
+                        <button className="rounded-md bg-red-600 hover:bg-red-800 transition px-3 py-1 text-white shadow-sm relative mt-10" onClick={(e) => { e.preventDefault(); 
+                            dispatch(deleteMassageReducer(massageId))}} >Delete</button>
                     </div>
                     : null
                 }
