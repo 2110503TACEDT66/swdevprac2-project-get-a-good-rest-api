@@ -6,7 +6,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { useSession } from 'next-auth/react';
 
-export default async function TopMenu() {
+export default function TopMenu() {
 
     // const session = await getServerSession(authOptions);
     // console.log(session);
