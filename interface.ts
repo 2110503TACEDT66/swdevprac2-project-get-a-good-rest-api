@@ -31,6 +31,7 @@ export interface ReservationItem {
     name: string,
     province: string,
     tel: string,
+    picture: string,
     id: string
   },
   _id: string,

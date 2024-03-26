@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 
 import { deleteMassageReducer } from '@/redux/features/massageSlice';
 
-export default function Card({ massageName, imgSrc, massageId }: { massageName: string, imgSrc: string, massageId: string }) {
+export default function Card({ massageName, imgSrc, massageId,masssageDescription,massageDistricts }: { massageName: string, imgSrc: string, massageId: string, masssageDescription: string, massageDistricts: string}) {
 
     const {data:session} = useSession();
     const dispatch = useDispatch<AppDispatch>()
@@ -27,23 +27,27 @@ export default function Card({ massageName, imgSrc, massageId }: { massageName: 
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
                     <p className="text-white text-lg font-semibold">{massageName}</p>
                     <p className="text-gray-200 text-sm">
-                        ร้านนวดที่ดีที่สุดในย่าน พัฒนาการ อ่อนนุช ศรีนครินทร์
+                        {massageDistricts}
                     </p>
                 </div>
             </div>
-            <div className="h-[40%] p-4">
+            <div className="h-[40%] p-4 break-words relative">
                 <p className="text-gray-600 text-sm">
-                    ข้อมูลเพิ่มเติมเกี่ยวกับร้านนวด
+                    {masssageDescription}
                 </p>
                 { session?.user.data.role === Role.Admin ?
-                    <div className='flex gap-2 justify-end items-end h-5/6'>
+                <div className='absolute bottom-0 right-0 p-4'>
+                    <div className='flex gap-2 h-5/6'>
                         <ModalButton text='Edit' color='yellow'>
                             <MassageForm isUpdate={true} id={massageId}/>
                         </ModalButton>
-                        <button className="rounded-md bg-red-600 hover:bg-red-800 transition px-3 py-1 text-white shadow-sm relative mt-10" onClick={(e) => { e.preventDefault(); 
+                        <div>
+                             <button className="rounded-md bg-red-600 hover:bg-red-800 transition px-3 py-1 text-white shadow-sm relative mt-10" onClick={(e) => { e.preventDefault(); 
                             dispatch(deleteMassageReducer(massageId))}} >Delete</button>
+                        </div>
+                       
                     </div>
-                    : null
+                </div>: null
                 }
             </div>
         </InteractiveCard>

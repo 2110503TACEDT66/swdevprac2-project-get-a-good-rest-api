@@ -5,6 +5,7 @@ import { MassageOne } from "../../../../../interface";
 export default async function HospitalDetailPage({ params }: { params: { mid: string } }) {
 
     const massage:MassageOne = await getMassage(params.mid);
+    console.log(massage)
 
     return (
         <main className="p-5">
