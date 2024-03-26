@@ -17,7 +17,7 @@ export default function BookingList() {
     const reservationItems = useAppSelector(state => state.reservationSlice.reservationItems)
     const dispatch = useDispatch<AppDispatch>()
 
-    // console.log(reservationItems)
+    console.log(reservationItems)
     useEffect(() => {
         const fetchReservations = async () => {
             const reservations:ReservationJson = await getReservations();
@@ -32,10 +32,11 @@ export default function BookingList() {
         {
             reservationItems.length > 0 ? (
                 reservationItems.map((reservation) => (
+                    
 
                     <div className="bg-[#FFFFFF] rounded-xl mx-5 my-2 h-[180px] flex overflow-hidden shadow-md w-[800px]" key={reservation._id}>
                         <div className="w-[200px] h-full overflow-hidden">
-                            <Image src={'/img/cover.jpg'} alt="Reservation image" width={0} height={0} sizes="10vw" className="w-[200px] h-full"/>
+                            <Image src={reservation.massage.picture == "no-photo" ? "/img/massage-default.jpg" : reservation.massage.picture} alt="Reservation image" width={0} height={0} sizes="10vw" className="w-[200px] h-full"/>
                         </div>
                         <div className="p-6 flex flex-col w-full">
                             <div>

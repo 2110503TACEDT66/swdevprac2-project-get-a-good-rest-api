@@ -48,7 +48,8 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
                 name: "",
                 province: "",
                 tel: "",
-                id: massage
+                id: massage,
+                picture: ""
             },
             id: resertionID,
             _id: resertionID,
