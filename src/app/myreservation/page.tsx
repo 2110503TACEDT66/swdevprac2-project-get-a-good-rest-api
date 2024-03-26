@@ -11,7 +11,7 @@ export default async function MyBook() {
         <div className="p-2 flex flex-row justify-between items-center px-24 ">
             <ReservationList />
             {
-                session?.user.data.role === "admin" ?
+                session?.user.data.role !== "admin" ?
                 <ReservationForm isUpdate={false} id={null} />
                 : null
             }
