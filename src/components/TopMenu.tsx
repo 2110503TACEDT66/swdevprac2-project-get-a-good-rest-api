@@ -7,6 +7,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 export default async function TopMenu() {
 
     const session = await getServerSession(authOptions);
+    console.log(session);
 
     return (
         <div className="h-[80px] bg-[#DBE7C9] fixed top-0 left-0 right-0 z-30 flex flex-row justify-between">
