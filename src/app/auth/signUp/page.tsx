@@ -36,7 +36,7 @@ export default function Page() {
 
     return (
         <div className="flex flex-col items-center justify-center mt-72">
-            <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-96 gap-4">
+            <div className="bg-[#FFFFFF] shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-96 gap-4">
                 <h1 className="text-2xl text-center mb-5">Let's be our family !</h1>
                 <TextField id="name" label="name" variant="standard"  onChange={(e) => setName(e.target.value)} className="border border-gray-300 rounded-md w-full focus:outline-none focus:border-green-500"/>
                 <TextField id="email" label="email" variant="standard" type="email" onChange={(e) => setEmail(e.target.value)} className="border border-gray-300 rounded-md w-full focus:outline-none focus:border-green-500"/>

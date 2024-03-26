@@ -17,7 +17,7 @@ export default function Massage() {
     const massageItems = useAppSelector(state => state.massageSlice.massageItems)    
 
     return (
-        <main className="text-center p-5">
+        <main className="p-5">
 
             <div className="flex flex-col justify-center items-center mt-20">
                  <TextHeader>
@@ -31,8 +31,8 @@ export default function Massage() {
             {
                 session?.user.data.role === "admin"
                 ? (
-                    <div className="mt-20">
-                       <ModalButton text="Create new massage">
+                    <div className="flex flex-col justify-center items-center mt-20">
+                       <ModalButton text="Create new massage" color="green">
                         {<MassageForm isUpdate={false} id={null}/>}
                         </ModalButton> 
                     </div>
