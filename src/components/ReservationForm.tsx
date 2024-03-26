@@ -78,7 +78,14 @@ export default function ReservationForm({ isUpdate, id }: { isUpdate: boolean, i
                         setDatePicker(value);
                     }} defaultDate={datePicker} />
 
-                    <button name="Book Vaccine" className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5" onClick={onSumbit}>Reserve Massage</button>
+                    <button name="Book Vaccine" className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5" 
+                    onClick={() => { 
+                        if (reservationItems.length >= 3) {
+                            alert("You already have 3 reservations")
+                            return ;
+                        }
+                        onSumbit();
+                        }}>Reserve Massage</button>
                 </div>
             </div>
         </>
