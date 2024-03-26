@@ -11,6 +11,7 @@ import { setReservationReducer } from "@/redux/features/reservationSlice"
 import { useEffect } from "react"
 import { ReservationJson } from "../../interface"
 import TextHeader from "./TextHeader"
+import dayjs from "dayjs"
 
 export default function BookingList() {
 
@@ -39,7 +40,7 @@ export default function BookingList() {
                         </div>
                         <div className="p-6 flex flex-col w-full">
                             <div>
-                                <div className="text-xl">Date of Reservation : {reservation.apptDate}</div>
+                                <div className="text-xl">Date of Reservation : {dayjs(reservation.apptDate).format('DD-MMM-YYYY')} </div>
                                 <div className="text-lg text-gray-400">Massage : {reservation.massage.name}</div>
                             </div>
 

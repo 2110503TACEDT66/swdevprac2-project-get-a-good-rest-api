@@ -9,7 +9,8 @@ const TextContainer = ({Header,contant}:{Header:string,contant:string}) => {
         <h2>
             {Header}
         </h2>
-        </TextHeader>
+      </TextHeader>
+      
       <TextContent>
         <p>
            {contant}
